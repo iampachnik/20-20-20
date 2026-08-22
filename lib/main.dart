@@ -44,11 +44,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isActive = true;
+  bool isLeftActive = true;
+  bool isRightActive = false;
 
-  void toggleActive() {
+  void toggleLeftActive() {
     setState(() {
-      isActive = !isActive;
+      isLeftActive = !isLeftActive;
+    });
+  }
+
+  void toggleRightActive() {
+    setState(() {
+      isRightActive = !isRightActive;
     });
   }
 
@@ -60,11 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           MainBackground(
             leftChild: LeftContent(
-              isActive: isActive,
-              toggleActive: toggleActive,
+              isActive: isLeftActive,
+              toggleActive: toggleLeftActive,
             ),
             rightChild: RightContent(
-              isActive: isActive,
+              isActive: isRightActive,
+              toggleActive: toggleRightActive,
             ),
           ),
         ],
